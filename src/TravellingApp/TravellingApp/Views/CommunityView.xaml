@@ -37,16 +37,15 @@
 
 			<Style x:Key="PostTitleStyle" TargetType="Label">
 				<Setter Property="FontFamily" Value="{StaticResource PoppinsSemiBold}" />
-				<Setter Property="FontSize" Value="10" />
+				<Setter Property="FontSize" Value="Large" />
 				<Setter Property="TextColor" Value="{StaticResource BlackColor}" />
 				<Setter Property="HorizontalOptions" Value="Start" />
-				<Setter Property="WidthRequest" Value="100" />
 				<Setter Property="Margin" Value="12, 12, 12, 6" />
 			</Style>
 
 			<Style x:Key="PostDateStyle" TargetType="Label">
 				<Setter Property="FontFamily" Value="{StaticResource PoppinsMedium}" />
-				<Setter Property="FontSize" Value="8" />
+				<Setter Property="FontSize" Value="Medium" />
 				<Setter Property="TextColor" Value="{StaticResource BlackColor}" />
 				<Setter Property="Margin" Value="12, 0, 12, 12" />
 			</Style>
@@ -78,7 +77,7 @@
 						       Source="{Binding Image}" />
 						<Label Grid.Row="1"
 						       Style="{StaticResource PostTitleStyle}"
-						       Text="{Binding SubTitle}" />
+						       Text="{Binding Title}" />
 						<Label Grid.Row="2"
 						       Style="{StaticResource PostDateStyle}"
 						       Text="{Binding Date}" />
@@ -151,6 +150,7 @@
 			              CurrentItem="{Binding CurrentPost, Mode=TwoWay}"
 			              ItemTemplate="{StaticResource PostItemTemplate}"
 			              ItemsSource="{Binding Posts}"
+			              Position="{Binding CurrentIndex, Mode=TwoWay}"
 			              VerticalOptions="End">
 				<CarouselView.Margin>
 					<OnPlatform x:TypeArguments="Thickness">
@@ -158,18 +158,6 @@
 						<On Platform="Android" Value="12, 24, 0, 0" />
 					</OnPlatform>
 				</CarouselView.Margin>
-				<CarouselView.PeekAreaInsets>
-					<OnPlatform x:TypeArguments="Thickness">
-						<On Platform="iOS" Value="0, 0, 200, 0" />
-						<On Platform="Android" Value="0, 0, 600, 0" />
-					</OnPlatform>
-				</CarouselView.PeekAreaInsets>
-				<CarouselView.ItemsLayout>
-					<LinearItemsLayout ItemSpacing="12"
-					                   Orientation="Horizontal"
-					                   SnapPointsAlignment="Start"
-					                   SnapPointsType="Mandatory" />
-				</CarouselView.ItemsLayout>
 			</CarouselView>
 			<!--  FILTER  -->
 			<Grid Grid.Row="3" Margin="60,0">

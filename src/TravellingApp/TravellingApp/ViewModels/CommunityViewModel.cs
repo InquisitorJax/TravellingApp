@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using TravellingApp.Models;
 using TravellingApp.Services;
 using Xamarin.Forms;
@@ -9,6 +10,7 @@ namespace TravellingApp.ViewModels
     {
         private ObservableCollection<Post> _posts;
         private Post _currentPost;
+		private int _currentIndex;
 
         public CommunityViewModel()
         {
@@ -34,6 +36,17 @@ namespace TravellingApp.ViewModels
                 OnPropertyChanged();
             }
         }
+
+		public int CurrentIndex
+		{
+			get { return _currentIndex;  }
+			set
+			{
+				_currentIndex = value;
+				Console.WriteLine($"{Environment.NewLine}=========================> Setting Current Index to {_currentIndex}");
+				OnPropertyChanged();
+			}
+		}
 
         private void LoadPosts()
         {
