@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using TravellingApp.Models;
 using TravellingApp.Services;
 using Xamarin.Forms;
@@ -14,8 +15,11 @@ namespace TravellingApp.ViewModels
 
         public CommunityViewModel()
         {
+			MoveByPositionCommand = new Command(() => CurrentIndex = 3);
             LoadPosts();
         }
+
+		public ICommand MoveByPositionCommand { get; private set; }
 
         public ObservableCollection<Post> Posts
         {

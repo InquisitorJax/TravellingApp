@@ -118,15 +118,23 @@
 			<!--  HEADER INFO  -->
 			<Grid Grid.Row="0"
 			      Margin="12,24,12,0"
-			      HorizontalOptions="Start"
-			      WidthRequest="250">
+			      HorizontalOptions="Start">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
-				<Label Grid.Row="0"
-				       Style="{StaticResource SubTitleStyle}"
-				       Text="{Binding CurrentPost.Title}" />
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<Label Style="{StaticResource SubTitleStyle}" Text="{Binding CurrentPost.Title}" />
+					<Button Grid.Column="1"
+					        Command="{Binding MoveByPositionCommand}"
+					        HeightRequest="30"
+					        Text="Move to 4"
+					        WidthRequest="100" />
+				</Grid>
 				<BoxView Grid.Row="1"
 				         Margin="12,0"
 				         HeightRequest="2"
